@@ -22,7 +22,13 @@ export default defineConfig({
     },
   ],
   plugins: [
-    ...(process.env.RSDOCTOR === "true" ? [new RsdoctorRspackPlugin()] : []),
+    ...(process.env.RSDOCTOR === "true"
+      ? [
+          new RsdoctorRspackPlugin({
+            disableClientServer: true,
+          }),
+        ]
+      : []),
   ],
   output: {
     clean: true,
